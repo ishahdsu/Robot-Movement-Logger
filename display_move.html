@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Last Registered Move</title>
+</head>
+<body>
+    <div>
+        <h1>Last Registered Move</h1>
+        <div id="lastMove">Loading...</div>
+        <button onclick="fetchLastMove()">Refresh</button>
+    </div>
+
+    <script>
+        function fetchLastMove() {
+            fetch('fetch_last_move.php')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('lastMove').innerText = data;
+                })
+                .catch(error => console.error('Error fetching the last move:', error));
+        }
+
+        fetchLastMove();
+    </script>
+</body>
+</html>
